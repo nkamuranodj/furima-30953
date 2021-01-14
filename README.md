@@ -28,7 +28,7 @@
 
 ### Association
 
-- has_one     :buyer
+- has_one :ships_delivery
 - belongs_to  :user
 - belongs_to  :item
 
@@ -40,11 +40,7 @@
 | description       | text       | null: false       |
 | category_id       | integer    | null: false       |
 | condition_id      | integer    | null: false       |
-| ship_id           | integer    | null: false       |
 | price             | string     | null: false       |
-| delively_payer_id | integer    | null: false       |
-| ship_area_id      | integer    | null: false       |
-| ship_day_id       | integer    | null: false       |
 | user              | references | foreign_key: true |
 
 ### Association
