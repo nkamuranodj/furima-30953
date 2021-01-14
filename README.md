@@ -17,7 +17,7 @@
 
 - has_many :items
 - has_many :comments , through: items
-- has_many :buyer
+- has_many :buyers
 
 ## buyer テーブル
 
@@ -28,49 +28,45 @@
 
 ### Association
 
+- has_one     :buyer
 - belongs_to  :user
 - belongs_to  :item
 
 ## items テーブル
 
-| Column       | Type       | Options           |
-| ------------ | -----------| ----------------- |
-| item_name    | string     | null: false       |
-| description  | text       | null: false       |
-| category     | integer    | null: false       |
-| condition    | integer    | null: false       |
-| ship         | references |                   |
-| price        | string     | null: false       |
-| user         | references | foreign_key: true |
-| category     | string     | null: false       |
-| condition    | string     | null: false       |
+| Column            | Type       | Options           |
+| ----------------- | -----------| ----------------- |
+| item_name         | string     | null: false       |
+| description       | text       | null: false       |
+| category_id       | integer    | null: false       |
+| condition_id      | integer    | null: false       |
+| ship_id           | integer    | null: false       |
+| price             | string     | null: false       |
+| delively_payer_id | integer    | null: false       |
+| ship_area_id      | integer    | null: false       |
+| ship_day_id       | integer    | null: false       |
+| user              | references | foreign_key: true |
 
 ### Association
 
 - has_many :comments
 - belongs_to :users
 - has_one :buyer
-- has_one :ships_delivery
 
 ## ships_delivery テーブル
 
 | Column                 | Type       | Options           |
 | ---------------------- | -----------| ----------------- |
-| delively_payer         | integer    | null: false       |
-| ship_area              | integer    | null: false       |
-| ship_day               | integer    | null: false       |
 | post_number            | string     | null: false       |
-| delivery_city          | integer    | null: false       |
+| delivery_city_id       | integer    | null: false       |
 | delivery_municipality  | string     | null: false       |
 | delivery_address       | string     | null: false       |
-| buil_name              | string     | null: false       |
+| buil_name              | string     |                   |
 | phone number           | string     | null: false       |
-| items                  | references | foreign_key: true |
 | buyer                  | references | foreign_key: true |
 
 ### Association
 
-- belongs_to :item
 - belongs_to :buyer
 
 ## comments テーブル
