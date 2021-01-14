@@ -41,6 +41,9 @@
 | category_id       | integer    | null: false       |
 | condition_id      | integer    | null: false       |
 | price             | string     | null: false       |
+| delively_payer_id | integer    | null: false       |
+| ship_area_id      | integer    | null: false       |
+| ship_day_id       | integer    | null: false       |
 | user              | references | foreign_key: true |
 
 ### Association
