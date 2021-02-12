@@ -4,7 +4,7 @@ class Item < ApplicationRecord
   belongs_to :user
   has_one_attached :image
   extend ActiveHash::Associations::ActiveRecordExtensions
-  belongs_to :Category, :Condition, :Delively_payer, :Ship_area, :Ship_day
+  belongs_to :Category, :Condition, :Delivelypayer, :Shiparea, :Shipday
   
 
   with_options presence: true do
