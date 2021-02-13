@@ -1,10 +1,10 @@
 class Item < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_one :buyers, dependent: :destroy
-  belongs_to :user
+  has_one :user, dependent: :destroy
   has_one_attached :image
   extend ActiveHash::Associations::ActiveRecordExtensions
-  belongs_to :Category, :Condition, :Delivelypayer, :Shiparea, :Shipday
+  belongs_to :Category, :Condition, :Deliverypayer, :Shiparea, :Shipday
   
 
   with_options presence: true do
