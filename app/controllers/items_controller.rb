@@ -6,7 +6,6 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
-    redirect_to new_user_session_path
   end
 
   def create
