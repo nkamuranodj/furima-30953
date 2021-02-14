@@ -7,21 +7,20 @@ class Item < ApplicationRecord
   belongs_to :Category, :Condition, :Deliverypayer, :Shiparea, :Shipday
   
 
+
+
+
   with_options presence: true do
+    validates :image
     validates :item_name
     validates :description
-    validates :category_id
-    validates :condition_id,  numericality: { other_than: 1 }
-    validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 }
-    validates :delively_payer_id
-    validates :ship_area_id
-    validates :ship_day_id
-
-
-  def was_attached?
-    self.image.attached?
-  end
+    validates :price, format: { with: /\A[0-9]+\z/ }, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 }
+    with_options numericality: { other_than: 1 } do
+      validates :condition_id
+      validates :category_id
+      validates :delively_payer_id
+      validates :ship_area_id
+      validates :ship_day_id
 end
 end
-
-
+end
