@@ -4,11 +4,11 @@ class Item < ApplicationRecord
   has_one :user, dependent: :destroy
   has_one_attached :image
   extend ActiveHash::Associations::ActiveRecordExtensions
-  belongs_to :Category
-  belongs_to :Condition
-  belongs_to :Deliverypayer
-  belongs_to :Shiparea
-  belongs_to :Shipday
+  belongs_to :category
+  belongs_to :condition
+  belongs_to :deliverypayer
+  belongs_to :shiparea
+  belongs_to :shipday
 
   with_options presence: true do
     validates :image
