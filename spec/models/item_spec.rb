@@ -9,38 +9,6 @@ RSpec.describe Item, type: :model do
         it '登録内容が存在すれば登録できる' do
           expect(@item).to be_valid
         end
-        it '商品名があれば出品できる' do
-          @item.item_name = 'テスト'
-          expect(@item).to be_valid
-        end
-        it '商品説明が入力されていれば出品できる' do
-          @item.description = 'テスト'
-          expect(@item).to be_valid
-        end
-        it 'カテゴリーに入力があればできる' do
-          @item.category_id = '2'
-          expect(@item).to be_valid
-        end
-        it '商品状態が入力あれば登録できる' do
-          @item.condition_id = '2'
-          expect(@item).to be_valid
-        end
-        it '価格に入力があれば登録できる' do
-          @item.price = '310'
-          expect(@item).to be_valid
-        end
-        it '配送の負担に入力あれば登録できる' do
-          @item.delively_payer_id = '2'
-          expect(@item).to be_valid
-        end
-        it '発送先地域に入力あれば登録できる' do
-          @item.ship_area_id = '2'
-          expect(@item).to be_valid
-        end
-        it '発送までの日数に入力あれば登録できる' do
-          @item.ship_day_id = '2'
-          expect(@item).to be_valid
-        end
       end
       context '出品がうまくいかないとき' do
         it '画像が空では登録できない' do
