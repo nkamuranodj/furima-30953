@@ -31,25 +31,50 @@ RSpec.describe Item, type: :model do
           @item.valid?
           expect(@item.errors.full_messages).to include 'Category must be other than 1'
         end
+        it '商品のカテゴリーが選択されてないと登録できない' do
+          @item.category_id = nil
+          @item.valid?
+          expect(@item.errors.full_messages).to include ("Category can't be blank")
+        end
         it '商品の状態が選択されてないと登録できない' do
           @item.condition_id = 1
           @item.valid?
           expect(@item.errors.full_messages).to include 'Condition must be other than 1'
+        end
+        it '商品の状態が選択されてないと登録できない' do
+          @item.condition_id = nil
+          @item.valid?
+          expect(@item.errors.full_messages).to include ("Condition can't be blank")
         end
         it '送料の負担が選択されてないと登録できない' do
           @item.delively_payer_id = 1
           @item.valid?
           expect(@item.errors.full_messages).to include 'Delively payer must be other than 1'
         end
+        it '送料の負担が選択されてないと登録できない' do
+          @item.delively_payer_id = nil
+          @item.valid?
+          expect(@item.errors.full_messages).to include ("Delively payer can't be blank")
+        end
         it '配送もとの地域が選択されてないと登録できない' do
           @item.ship_area_id = 1
           @item.valid?
           expect(@item.errors.full_messages).to include 'Ship area must be other than 1'
         end
+        it '配送もとの地域が選択されてないと登録できない' do
+          @item.ship_area_id = nil
+          @item.valid?
+          expect(@item.errors.full_messages).to include ("Ship area can't be blank")
+        end
         it '発送までの日数が選択されてないと登録できない' do
           @item.ship_day_id = 1
           @item.valid?
           expect(@item.errors.full_messages).to include 'Ship day must be other than 1'
+        end
+        it '発送までの日数が選択されてないと登録できない' do
+          @item.ship_day_id = nil
+          @item.valid?
+          expect(@item.errors.full_messages).to include ("Ship day can't be blank")
         end
         it '価格が入力されていないと登録できない' do
           @item.price = ''
