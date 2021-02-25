@@ -2,6 +2,9 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new]
   def index
     @items = Item.order("created_at DESC")
+    <#購入されているかの条件判定のため、仮のインスタンス>
+    @buyers = nil
+     <# //購入されているかの条件判定のため、仮のインスタンス >
   end
 
   def new
@@ -23,8 +26,12 @@ class ItemsController < ApplicationController
 
   private
 
+  def set_item
+    @item = Item.find(params[:id])
+  end
+
   def item_params
-    params.require(:item).permit(:image, :item_name, :description, :category_id, :condition_id, :price, :delivery_payer_id,
-                                 :ship_area_id, :ship_day_id).merge(user_id: current_user.id)
+    params.require(:item).permit(:image, :item_name, :description, :category_id, :condition_id, :price, :deliverypayer_id,
+                                 :shiparea_id, :shipday_id).merge(user_id: current_user.id)
   end
 end

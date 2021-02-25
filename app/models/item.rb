@@ -4,11 +4,11 @@ class Item < ApplicationRecord
   belongs_to :user
   has_one_attached :image
   extend ActiveHash::Associations::ActiveRecordExtensions
-  belongs_to :category
-  belongs_to :condition
-  belongs_to :deliverypayer
-  belongs_to :shiparea
-  belongs_to :shipday
+  belongs_to_active_hash :category
+  belongs_to_active_hash :condition
+  belongs_to_active_hash :deliverypayer
+  belongs_to_active_hash :shiparea
+  belongs_to_active_hash :shipday
 
   with_options presence: true do
     validates :image
@@ -19,9 +19,9 @@ class Item < ApplicationRecord
     with_options numericality: { other_than: 1 } do
       validates :condition_id
       validates :category_id
-      validates :delivery_payer_id
-      validates :ship_area_id
-      validates :ship_day_id
+      validates :deliverypayer_id
+      validates :shiparea_id
+      validates :shipday_id
     end
   end
 end
