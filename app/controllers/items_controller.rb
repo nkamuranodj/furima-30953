@@ -1,11 +1,12 @@
 class ItemsController < ApplicationController
   before_action :set_item, except: [:index, :new, :create]
-  before_action :authenticate_user!, only: [:new]
+  before_action :authenticate_user!, only: [:new, :destroy, :create]
+  before_action :contributor_confirmation, only: [:destroy]
   def index
-    @items = Item.order("created_at DESC")
+    @items = Item.order('created_at DESC')
     # 購入されているかの条件判定のため、仮のインスタンス
     @buyers = nil
-    # 購入されているかの条件判定のため、仮のインスタンス 
+    # 購入されているかの条件判定のため、仮のインスタンス
   end
 
   def new
@@ -21,6 +22,11 @@ class ItemsController < ApplicationController
     end
   end
 
+  def destroy
+    @item.destroy
+    redirect_to root_path
+  end
+
   def show
   end
 
@@ -28,6 +34,10 @@ class ItemsController < ApplicationController
 
   def set_item
     @item = Item.find(params[:id])
+  end
+
+  def contributor_confirmation
+    redirect_to root_path unless current_user == @item.user
   end
 
   def item_params
