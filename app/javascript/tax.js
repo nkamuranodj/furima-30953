@@ -1,5 +1,5 @@
 function tax (){
-  const itemPrice  = document.getElementById("item-price");
+  const itemPrice  = document.getElementById("item-price","sell-yen");
   itemPrice.addEventListener("keyup", () => {
     const fee = Math.floor(itemPrice.value * 0.1) ;
     const addTaxPrice = document.getElementById("add-tax-price");
