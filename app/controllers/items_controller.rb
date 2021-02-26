@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
   before_action :set_item, except: [:index, :new, :create]
-  before_action :authenticate_user!, only: [:new, :destroy, :create]
-  before_action :contributor_confirmation, only: [:destroy]
+  before_action :authenticate_user!, only: [:new, :destroy, :create, :edit, :update]
+  before_action :contributor_confirmation, only: [:destroy, :edit, :update]
   def index
     @items = Item.order('created_at DESC')
     # 購入されているかの条件判定のため、仮のインスタンス
@@ -25,6 +25,17 @@ class ItemsController < ApplicationController
   def destroy
     @item.destroy
     redirect_to root_path
+  end
+
+  def edit
+  end
+
+  def update
+    if @item.update(item_params)
+      redirect_to item_path
+    else
+      render :edit
+    end
   end
 
   def show
