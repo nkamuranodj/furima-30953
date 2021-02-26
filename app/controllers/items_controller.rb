@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
   before_action :set_item, except: [:index, :new, :create]
   before_action :authenticate_user!, only: [:new, :destroy, :create, :edit, :update]
-  before_action :contributor_confirmation, only: [:destroy]
+  before_action :contributor_confirmation, only: [:destroy, :edit, :update]
   def index
     @items = Item.order('created_at DESC')
     # 購入されているかの条件判定のため、仮のインスタンス
