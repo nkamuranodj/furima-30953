@@ -1,12 +1,12 @@
 class ItemsController < ApplicationController
   before_action :set_item, except: [:index, :new, :create]
   before_action :authenticate_user!, only: [:new]
-  before_action :contributor_confirmation, only: [ :destroy]
+  before_action :contributor_confirmation, only: [:destroy]
   def index
-    @items = Item.order("created_at DESC")
+    @items = Item.order('created_at DESC')
     # 購入されているかの条件判定のため、仮のインスタンス
     @buyers = nil
-    # 購入されているかの条件判定のため、仮のインスタンス 
+    # 購入されているかの条件判定のため、仮のインスタンス
   end
 
   def new
@@ -39,7 +39,6 @@ class ItemsController < ApplicationController
   def contributor_confirmation
     redirect_to root_path unless current_user == @item.user
   end
-
 
   def item_params
     params.require(:item).permit(:image, :item_name, :description, :category_id, :condition_id, :price, :deliverypayer_id,
