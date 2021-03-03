@@ -28,7 +28,7 @@
 
 ### Association
 
-- has_one :ships_delivery
+- has_one :shipsdelivery
 - belongs_to  :user
 - belongs_to  :item
 
@@ -52,16 +52,16 @@
 - belongs_to :users
 - has_one :buyer
 
-## ships_delivery テーブル
+## shipsdelivery テーブル
 
 | Column                 | Type       | Options           |
 | ---------------------- | -----------| ----------------- |
-| post_number            | string     | null: false       |
-| delivery_city_id       | integer    | null: false       |
-| delivery_municipality  | string     | null: false       |
-| delivery_address       | string     | null: false       |
-| buil_name              | string     |                   |
-| phone number           | string     | null: false       |
+| postnumber            | string     | null: false       |
+| deliverycity_id       | integer    | null: false       |
+| deliverymunicipality  | string     | null: false       |
+| deliveryaddress       | string     | null: false       |
+| builname              | string     |                   |
+| phonenumber           | string     | null: false       |
 | buyer                  | references | foreign_key: true |
 
 ### Association
