@@ -1,6 +1,8 @@
 class Buyer < ApplicationRecord
+
+  has_one :shipsdelivery
   belongs_to :item
   belongs_to :user
-  with_options presence: true do
-    
+  
+
 end
