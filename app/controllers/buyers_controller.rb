@@ -1,4 +1,6 @@
 class BuyersController < ApplicationController
+  before_action :authenticate_user!, only: [:index, :new,  :create]
+
   def index
     @buyer_item = BuyerItem.new
     @item = Item.find(params[:item_id])
@@ -12,7 +14,7 @@ class BuyersController < ApplicationController
     @item = Item.find(params[:item_id])
     @buyer_item = BuyerItem.new(buyer_params)
     if @buyer_item.valid?
-      # pay_item
+      pay_item
       @buyer_item.save
       redirect_to root_path
     else
@@ -35,5 +37,6 @@ class BuyersController < ApplicationController
       currency:'jpy'
     )
  end
+ 
 
 end
