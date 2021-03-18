@@ -4,9 +4,6 @@ class ItemsController < ApplicationController
   before_action :contributor_confirmation, only: [:destroy, :edit, :update]
   def index
     @items = Item.order('created_at DESC')
-    # 購入されているかの条件判定のため、仮のインスタンス
-    @buyers = nil
-    # 購入されているかの条件判定のため、仮のインスタンス
   end
 
   def new
