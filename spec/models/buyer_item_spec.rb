@@ -11,7 +11,7 @@ RSpec.describe BuyerItem, type: :model do
         end
       end
       context '購入がうまくいかないとき' do
-        it "tokenが空では登録できないこと" do
+        it 'tokenが空では登録できないこと' do
           @buyer_item.token = nil
           @buyer_item.valid?
           expect(@buyer_item.errors.full_messages).to include("Token can't be blank")

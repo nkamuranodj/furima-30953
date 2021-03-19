@@ -4,7 +4,12 @@ class BuyersController < ApplicationController
   def index
     @buyer_item = BuyerItem.new
     @item = Item.find(params[:item_id])
-    redirect_to root_path if current_user == @item.user
+
+    if current_user == @item.user
+      redirect_to root_path
+    elsif @item.buyer.present?
+      redirect_to root_path
+    end
   end
 
   def new
