@@ -1,5 +1,5 @@
 class BuyersController < ApplicationController
-  before_action :authenticate_user!, only: [:index, :new, :create]
+  before_action :authenticate_user!, only: [:index,  :create]
   before_action :sel_item, only: [:index, :create]
   before_action :item_user, only: [:index, :create]
 
@@ -7,8 +7,7 @@ class BuyersController < ApplicationController
     @buyer_item = BuyerItem.new
   end
 
-  def new
-  end
+
 
   def create
     @buyer_item = BuyerItem.new(buyer_params)
