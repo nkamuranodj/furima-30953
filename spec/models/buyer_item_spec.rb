@@ -46,10 +46,10 @@ RSpec.describe BuyerItem, type: :model do
           @buyer_item.valid?
           expect(@buyer_item.errors.full_messages).to include("Phonenumber can't be blank")
         end
-        it '電話番号が番号以外では購入できない' do
-          @buyer_item.phonenumber = 'あ'
+        it '電話番号が12桁以上では購入できない' do
+          @buyer_item.phonenumber = '0000000000000'
           @buyer_item.valid?
-          expect(@buyer_item.errors.full_messages).to include('Phonenumber is not a number')
+          expect(@buyer_item.errors.full_messages).to include('Phonenumber is too long (maximum is 11 characters)')
         end
       end
     end
