@@ -26,13 +26,10 @@ class BuyersController < ApplicationController
   def sel_item
     @item = Item.find(params[:item_id])
   end
-    
-  def item_user
-    if current_user == @item.user || @item.buyer.present?
-      redirect_to root_path
-    end
-  end
 
+  def item_user
+    redirect_to root_path if current_user == @item.user || @item.buyer.present?
+  end
 
   def buyer_params
     params.require(:buyer_item).permit(:postnumber, :shiparea_id, :city, :deliveryaddres,

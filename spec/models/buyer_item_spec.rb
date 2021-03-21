@@ -9,6 +9,10 @@ RSpec.describe BuyerItem, type: :model do
         it '住所等が存在すれば購入できる' do
           expect(@buyer_item).to be_valid
         end
+        it '建物名がなくても購入できる' do
+          @buyer_item.builname = nil
+          expect(@buyer_item).to be_valid
+        end
       end
       context '購入がうまくいかないとき' do
         it 'tokenが空では登録できないこと' do

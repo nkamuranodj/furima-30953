@@ -8,7 +8,7 @@ class BuyerItem
     validates :shiparea_id, numericality: { other_than: 1 }
     validates :deliverymunicipality
     validates :deliveryaddres
-    validates :phonenumber, numericality: { only_integer: true},length: { maximum: 11 }
+    validates :phonenumber, numericality: { only_integer: true }, length: { maximum: 11 }
     validates :token
     validates :user_id
     validates :item_id
