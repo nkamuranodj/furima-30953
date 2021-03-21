@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 RSpec.describe Shipsdelivery, type: :model do
   describe '商品購入機能' do
     before do

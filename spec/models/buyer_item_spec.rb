@@ -1,8 +1,11 @@
 require 'rails_helper'
 RSpec.describe BuyerItem, type: :model do
-  before do
-    @buyer_item = FactoryBot.build(:buyer_item)
-  end
+    before do
+     @user = FactoryBot.create(:user)
+     @item = FactoryBot.create(:item, user_id: @user.id)
+     @buyer_item = FactoryBot.build(:buyer_item, user_id: @user.id, item_id: @item.id)
+     sleep 0.3
+    end
   describe '商品購入機能' do
     describe '商品購入' do
       context '購入がうまくいくとき' do
@@ -15,6 +18,16 @@ RSpec.describe BuyerItem, type: :model do
         end
       end
       context '購入がうまくいかないとき' do
+        it 'user_idが空では登録できないこと' do
+          @buyer_item.user_id = nil
+          @buyer_item.valid?
+          expect(@buyer_item.errors.full_messages).to include("User can't be blank")
+        end
+        it 'item_idが空では登録できないこと' do
+          @buyer_item.item_id = nil
+          @buyer_item.valid?
+          expect(@buyer_item.errors.full_messages).to include("Item can't be blank")
+        end
         it 'tokenが空では登録できないこと' do
           @buyer_item.token = nil
           @buyer_item.valid?
@@ -54,6 +67,11 @@ RSpec.describe BuyerItem, type: :model do
           @buyer_item.phonenumber = '0000000000000'
           @buyer_item.valid?
           expect(@buyer_item.errors.full_messages).to include('Phonenumber is too long (maximum is 11 characters)')
+        end
+          it '電話番号が英数混合では購入できない' do
+            @buyer_item.phonenumber = '000000o000000'
+            @buyer_item.valid?
+            expect(@buyer_item.errors.full_messages).to include('Phonenumber is not a number')
         end
       end
     end
