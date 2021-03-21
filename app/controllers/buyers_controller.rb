@@ -28,7 +28,9 @@ class BuyersController < ApplicationController
   end
 
   def item_user
-    redirect_to root_path if current_user == @item.user || @item.buyer.present?
+    if current_user == @item.user || @item.buyer.present?
+    redirect_to root_path 
+    end
   end
 
   def buyer_params
