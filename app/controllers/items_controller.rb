@@ -45,7 +45,7 @@ class ItemsController < ApplicationController
   end
 
   def contributor_confirmation
-    redirect_to root_path if current_user == @item.user || @item.buyer.brank?
+    redirect_to root_path if current_user == @item.user || @item.buyer.present?
   end
 
   def item_params
